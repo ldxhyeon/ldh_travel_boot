@@ -1,0 +1,172 @@
+.f-center-body{
+	width:100%;
+	height:100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction:column;
+}
+
+
+textarea.f-txt{
+	border:1px solid #dedede;
+	outline:none;
+	padding:4px;
+	border-radius:3px;
+	font-size:14px;
+	font-weight:500;
+	font-family:basic;
+	color:#585858;
+	box-sizing:border-box;
+	height:150px;
+	resize:none;
+}
+
+textarea.f-txt:focus{
+	border:1px solid #222;
+}
+
+
+
+input.f-inp{
+	width:230px;
+	padding:4px;
+	margin-top:10px;
+	border:1px solid #dedede;
+	outline:none;
+	border-radius:8px;
+	font-size:16px;
+	font-weight:700;
+	font-family:basic;
+	color:#585858;
+	box-sizing:border-box;
+	
+}
+
+
+input.f-inp.long{
+	width:100%;
+	margin:0 auto;
+	margin-top:4px;
+	margin-bottom:14px;
+	font-size: 14px;
+}
+
+input.f-inp:focus{
+	border:1px solid #222;
+}
+
+
+button.f-btn{
+	width:230px;
+	padding:4px;
+	outline:none;
+	border:1px solid #dedede;
+	background: #222;
+	font-size:16px;
+	font-weight:700;
+	font-family:basic;	
+	color:#ffff;
+	border-radius:8px;
+	cursor: pointer;
+	margin:0 auto;
+}
+
+button.f-btn.long{
+	width:100%;
+	margin-top:30px;
+}
+
+button.f-btn:hover{
+	background : #222;
+}
+
+
+.f-title{
+	color:#222;
+	font-size:13px;
+	font-weight: 700;
+	margin-top:12px;
+}
+
+
+select.f-select{
+	padding:5px;
+	color:#222;
+	font-weight:700;
+	font-family:basic;
+	font-size:15px;
+	border:1px solid #dedede;
+	border-radius:8px;
+	margin-top:4px;
+}
+
+
+.f-type-tag{
+	display:inline-block;
+	padding:2px 10px;
+	border:1px solid #999;
+	border-radius:10px;
+	color:#999;
+	font-size:14px;
+	font-weight:700;
+	cursor:pointer;
+	margin-top:10px;
+	margin-right:4px;
+}
+
+
+.f-type-tag.selected{
+	border:1px solid #222;
+	color:#fff;
+	background:#222;
+}
+
+
+
+
+.f-img-add-btn{
+	width:100%;
+	height:200px;
+	background: #f2f2f2;
+	border:1px solid #999;
+	border-radius:10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color:#999;
+	cursor: pointer;
+	font-size:25px;
+	position: relative;
+	margin-left: 1px;
+}
+
+
+.f-img-add-btn:hover{
+	background: #dedede;
+}
+
+
+
+.f-img-add-btn > img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
+	border-radius:10px;
+}
+
+
+.f-img-add-btn .delete-btn{
+	position:absolute;
+	bottom:5px;
+	right:5px; 
+	width:30px;
+	height:30px;
+	cursor:pointer;
+}
+
+
+
+
+
+

@@ -1,0 +1,245 @@
+@font-face{
+   font-family:"basic";
+   font-style:normal;
+   src:url(../font/NotoSansKR-Regular.otf) format('opentype');/* ttf-> truetype */
+}
+
+
+@font-face{
+   font-family:"black";
+   font-style:normal;
+   src:url(../font/NotoSansKR-Black.otf) format('opentype');
+}
+
+* {
+	font-family: basic;
+}
+
+:root {
+	--color-main:#0461FA;
+	--w-page:1050px;
+}
+
+
+.d-flex{
+	display: flex;
+}
+
+.j-c-center {
+	justify-content: center;
+}
+
+.j-c-space-between {
+	justify-content: space-between;
+}
+
+.a-i-ceter {
+	align-items: center;
+}
+
+body {
+	margin:0;
+	padding: 0;
+	font-size: 14px;
+}
+
+.body {
+	
+}
+
+header {
+	height: 60px;
+}
+
+header .menu-btn {
+	color: #999;
+	cursor: pointer;
+	font-weight: 700;
+	margin-right: 28px;
+	font-size: 17px;
+}
+
+header .menu-btn:hover {
+	color: #222;
+}
+
+.page-inner{
+	width: 1050px;
+	height: 100%;
+	background: #fff;
+	margin: 0 auto;
+}
+
+.page-section {
+	padding-top: 40px;
+}
+
+.page-title-txt {
+	font-family: black;
+	font-size: 22px;
+}
+
+.page-sub-title-txt {
+	color: #999;
+	margin-top: 2px;
+}
+
+
+.form-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-box label {
+	color: #999;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.form-box input {
+	width: 230px;
+	padding: 7px;
+	outline: none;
+	border: 1px solid #CDCDCD;
+	border-radius: 6px;
+	margin-top: 4px;
+	margin-bottom: 12px;
+}
+
+.form-box button {
+	background-color: #222;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 700;
+	border: 1px solid #dedede;
+	border-radius: 6px;
+	outline: none;
+	padding: 8px;
+	cursor: pointer;
+	transition-duration: 0.17s;
+	margin-top: 10px;
+}
+
+.form-box button:hover {
+	background: #000;
+}
+
+.form-box .gray-btn {
+	background: #f2f2f2;
+	color: #222;
+}
+
+.form-box .gray-btn:hover {
+	background: #ECECEC;
+}
+
+
+
+/* 체크박스 CSS* 시작*/
+
+.tag-checkbox {
+	padding: 1px 10px;
+	font-size: 13px;
+	color: #999;
+	border: 1px solid #999;
+	border-radius: 6px;
+	cursor: pointer;
+	margin-right: 6px;
+}
+
+.tag-checkbox.active {
+	background-color: #222;
+	border: 1px solid #222;
+	color: #fff;
+}
+
+/* 체크박스 CSS* 끝*/
+
+
+
+
+
+/*버튼 CSS* 시작*/
+
+button.outline-btn {
+	background-color: transparent;
+	outline: none;
+	border: 1px solid #222;
+	color: #000;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 2px 16px;
+}
+
+/* ↑ 수정! */
+
+button.outline-btn:hover {
+	color: #fff;
+	background: #222;
+}
+
+
+/*버튼 CSS* 끝*/
+
+
+
+
+
+.inp-result-txt {
+	font-size: 11px;
+	margin-bottom: 12px;
+	opacity: 0;
+}
+
+.inp-result-txt.ok {
+	color: #006DFF;
+	opacity: 1;
+}
+
+.inp-result-txt.no {
+	color: #E42300;
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

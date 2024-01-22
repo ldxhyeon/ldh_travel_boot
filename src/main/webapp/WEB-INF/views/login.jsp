@@ -54,5 +54,4 @@
 	
 </body>
 
-<script src="./js/home.js"></script>
 </html>

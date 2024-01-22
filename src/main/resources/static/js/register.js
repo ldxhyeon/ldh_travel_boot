@@ -200,7 +200,6 @@ $(document).ready(function(){
 		
 		
 		
-		
 		$.ajax({
 			url:'./u/save',
 			type:'post',

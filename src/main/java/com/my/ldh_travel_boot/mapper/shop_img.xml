@@ -1,0 +1,20 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop_img">	
+
+	 
+	 <insert id="save" parameterType="ShopImg">
+	 	INSERT INTO shop_img
+	 	(
+			shop_idx,
+			img_url,
+			created_date
+	 	)
+	 	VALUES
+	 	(
+	 		#{shop_idx},
+			#{img_url},
+			SYSDATE()
+	 	)
+	 </insert>
+	
+</mapper>

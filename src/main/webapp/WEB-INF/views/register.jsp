@@ -16,7 +16,6 @@
 
 <link rel="stylesheet" href="./css/all.min.css"/>
 <link rel="stylesheet" href="./css/app.css"/>
-<link rel="stylesheet" href="./css/home.css"/>
 
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

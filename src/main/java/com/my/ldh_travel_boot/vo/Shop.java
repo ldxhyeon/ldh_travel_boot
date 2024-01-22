@@ -7,6 +7,8 @@ public class Shop {
 	private String shop_uuid = null;
 	private String shop_type = null;
 	private String shop_name = null;
+	private String shop_main_img_url = null;
+	
 	private String shop_ceo = null;
 	private String shop_bs_code = null;
 	private String shop_zonecode = null;
@@ -20,6 +22,13 @@ public class Shop {
 	
 	
 	
+	
+	public String getShop_main_img_url() {
+		return shop_main_img_url;
+	}
+	public void setShop_main_img_url(String shop_main_img_url) {
+		this.shop_main_img_url = shop_main_img_url;
+	}
 	public int getShop_idx() {
 		return shop_idx;
 	}

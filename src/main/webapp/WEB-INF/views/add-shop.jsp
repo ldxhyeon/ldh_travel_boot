@@ -27,15 +27,15 @@
 </head>
 <body>
 	
-	<main style="display: flex;justify-content: center;">
+	<main style="height:100vh; overflow-y:auto;">
 		
-		<div style="width:500px;background:#fff;display: flex;flex-direction: column;">
+		<div style="margin:0 auto;width:500px;background:#fff;display: flex;flex-direction: column;">
 			<div style="color:#222;font-weight:700;font-size:17px;text-align:center;margin-top:20px;margin-bottom:20px;">업체등록</div>
 			
 			
 			<img id="preview-img" style="cursor:pointer;height:300px;object-fit:cover;" src="https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"/>
 			<input style="display:none;" id="img-file" type="file"/>
-			<button id="upload-img-btn">사진 업로드</button>
+<!-- 			<button id="test-upload-img-btn">사진 업로드</button> -->
 			
 			<span class="f-title">업체종류</span>
 			<div style="margin-bottom:30px;">
@@ -77,13 +77,20 @@
 			
 			
 			<span class="f-title"> 가게사진(최대 8장)</span>
-			<input style="display:none;" id="adding-img" type="file">
+			<input style="display:none;" id="adding-img-input" type="file">
 			<div id="detail-imgs" class="row">
 				<div class="col-md-6" style="padding:10px;">
 					<div id="add-img-btn" class="f-img-add-btn">
 						<i class="fa-solid fa-plus"></i>
 					</div>
 				</div>
+				
+				<!-- <div class="col-md-6" style="padding:10px;">
+					<div class="f-img-add-btn">
+						<img class="detail-base64-img" src="https://mblogthumb-phinf.pstatic.net/MjAyMDEwMTNfODgg/MDAxNjAyNjAwNjEwNDQ1.iqEge0q4paQfA8uRP40OFnVKr5u-yf3sqL32-p6riy8g.u4QulDVjhxzdUc0dWxZmw6TyMJ2PUpgYA5Rci0aDK_Yg.JPEG.dkzlffk/SE-69512333-005d-4acc-ba21-78a3f6203da6.jpg?type=w800"/>
+						<img class="delete-btn" src="./image/delete.png"/>
+					</div>
+				</div> -->
 				
 			</div>
 		
@@ -96,6 +103,14 @@
 		
 		
 	</main>
+	
+	
+	<div class="loading-container">
+		<span class="loader"></span>
+	</div>
+	
+	
+	
 	
 	
 	

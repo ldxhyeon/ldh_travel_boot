@@ -30,8 +30,20 @@ $(document).ready(function(){
 	
 	
 	
-	var now = Date.now();
-	alert(now);
+	$.ajax({
+		url:'./shop/test',
+		type:'post',
+		data:{
+			imgs:['a','b']
+		},
+		success:function(response) {
+			alert(response)
+		},
+		error:function(error) {
+			console.log(error);
+		}
+		
+	})
 	
 	
 	let selectedType = '호텔';
@@ -43,6 +55,59 @@ $(document).ready(function(){
 	}
 	var storage = firebase.storage();
 	
+	
+	// var base65ImageList = [];  // 사용 안하는 이유 : UI, data 2개를 관리하기 힘듬.(굳이 2개를 관리할 필요가 없음)
+	
+	
+	
+	
+	//사진 여러장 등록
+	$('#add-img-btn').on('click',function(){
+		
+		var imgCount =$('.added-img').length;
+		alert('현재 이미지 개수 : ' +imgCount);
+		if(imgCount==8) {
+			alert('상세이미지는 최대 8장만 가능합니다.');
+			return;
+		}
+		
+		$('#adding-img-input').trigger('click');
+	});
+	
+	
+	//사진 여러장 input change 이벤트
+	$('#adding-img-input').on('change',async function(){
+		var imgFile = $(this)[0].files[0];
+		// file -> 
+		var base64 = await getBase64(imgFile);
+		
+		
+		$('#detail-imgs').append(`
+				<div class="col-md-6 added-img" style="padding:10px;">
+					<div class="f-img-add-btn">
+						<img class="detail-base64-img" src="${base64}"/>
+						<img class="delete-btn" src="./image/delete.png"/>
+					</div>
+				</div>
+		`);
+		
+		
+		//input file 초기화
+		$(this).val('');
+		
+		
+	});
+	
+	//사진 삭제
+	$(document).on('click','.delete-btn',function(){
+		
+		var con = confirm ('사진 등록을 취소 하시겠습니끼?')
+		if(!con) {
+			return;
+		}
+		
+		$(this).closest('.col-md-6').remove();
+	});
 	
 	//파이어베이스 테스트
 	var file;
@@ -65,16 +130,10 @@ $(document).ready(function(){
 	});
 	
 	
-	$('#upload-img-btn').on('click',async function(){
+	$('#test-upload-img-btn').on('click',async function(){
+		var url = await uploadImgAndGetUrl(storage, file)		
 		
-		var now = Date.now();
-		var ref = storage.ref('shop_image').child('sh_'+now);
-		ref.put(file).then(function(snapshot){
-			//업로드 완료
-			alert('성공');
-		}).catch(function(err){
-			//업로드 실패
-		});
+		alert(url);
 	});
 	
 	
@@ -142,7 +201,17 @@ $(document).ready(function(){
 	
 	
 	//업체등록 버튼 이벤트
- 	$('#submit-btn').on('click',function(){
+ 	$('#submit-btn').on('click',async function(){
+		 
+		
+		 
+		 
+		var imgTags = $('.detail-base64-img');
+		$.each(imgTags,function(index,item){
+			var base64 = $(item).attr('src');
+			console.log(base64);
+		});
+		 
 		 
 		 var name=$('#name').val();
 		 var ceo=$('#ceo').val();
@@ -170,8 +239,8 @@ $(document).ready(function(){
 			 alert('업체명을 적어주세요');
 			 return;
 		 }
-		 if(ceo.length==0) {
-			 alert('대표자명을 적어주세요');
+		 if(ceo.length==0 || ceo.length>7) {
+			 alert('올바른 대표자명을 적어주세요');
 			 return;
 		 }
 		 if(bs_code.length==0) {
@@ -195,8 +264,41 @@ $(document).ready(function(){
 			 return;
 		 }
 		 
+		if(file==undefined) {
+			alert('대표이미지는 필수 입니다.');
+			return;
+		}	 
+		
+		var con = confirm('등록 하시겠습니까?');
+		if(!con) {
+			return;
+		}
+		
+		
+		$('.loading-container').css('display','flex');
 		 
 		 
+		var url = await uploadImgAndGetUrl(storage, file);
+		
+		//상세이미지 UI 여러장 -> 배열 로 추출
+		var detailImgsBase64=[];
+		var detailImgsUrl=[];
+		
+		var imgTags = $('.detail-base64-img');
+		$.each(imgTags, function(index,item){
+			var base64 = $(item).attr('src');
+			detailImgsBase64.push(base64);
+		});
+		
+		
+		
+		for(var i=0;i<detailImgsBase64.length;i++){
+			var oneBase64 = detailImgsBase64[i];
+			var oneUr1 = await uploadBase64AndGetUrl(storage, oneBase64);
+			detailImgsUrl.push(oneUr1);
+		}
+		
+		console.log(detailImgsUrl);
 		 
 		 
 		 
@@ -214,12 +316,21 @@ $(document).ready(function(){
 				 addr2:addr2,
 				 tel:tel,
 				 content:content,
+				 img_url:url,
+				 detail_imgs:detailImgsUrl
 			 },
 			 success:function(json) {
-				 alert(json);
+				 
+				 if(json=='ok') {
+					 $('.loading-container').css('display','none');
+					 alert('업체 등록 완료')
+					 location.replace('./');
+				 }
+				 
+				
 			 },
 			 error:function(err) {
-				 
+				 $('.loading-container').css('display','none');	
 			 }
 		 });
     });
@@ -228,18 +339,50 @@ $(document).ready(function(){
 });
 
 
+function uploadBase64AndGetUrl($storage,$b64) {
+	
+	return new Promise((resolve,reject)=>{
+		var now = Date.now();
+		var ref = $storage.ref('shop_image').child('sh_'+now);
+		ref.putString($b64, 'data_url').then(function(snapshot){
+			//업로드 완료 -> 다운로드 하기
+			
+			ref.getDownloadURL().then((url)=>{
+				resolve(url);
+			});
+			
+		}).catch(function(err){
+			//업로드 실패
+			reject();
+		});
+		
+	});
+	
+	
+};
+
+
+function uploadImgAndGetUrl($storage,$file) {
+	
+	return new Promise((resolve,reject)=>{
+		var now = Date.now();
+		var ref = $storage.ref('shop_image').child('sh_'+now);
+		ref.put($file).then(function(snapshot){
+			//업로드 완료 -> 다운로드 하기
+			
+			ref.getDownloadURL().then((url)=>{
+				resolve(url);
+			});
+			
+		}).catch(function(err){
+			//업로드 실패
+			reject();
+		});
+		
+	});
+	
+	
+};
 
 
 
-
-//function uploadImg() {
-//		return new Promise((resolve, reject)=>{
-//			var ref = storage.ref('some_path').child("test");
-//			ref.put(file).then(function(snapshot){
-//				//업로드 완료
-//				resolve();
-//			}).catch(function(err){
-//				reject();
-//			});
-//		});
-//	}

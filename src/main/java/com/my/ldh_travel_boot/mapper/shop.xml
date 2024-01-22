@@ -1,13 +1,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop">	
 
+
+
+	<select id="findSome">
+		SELECT = FROM shop
+		LIMIT 0,5
+	</select>
+
 	 
-	 <insert id="save" parameterType="Shop">
-	 	INSERT INTO shop
+	<insert id="save" parameterType="Shop" useGeneratedKeys="true" keyProperty="shop_idx">
+		INSERT INTO shop
 	 	(
 			shop_uuid,
 			shop_type,
 			shop_name,
+			shop_main_img_url,
 			shop_ceo,
 			shop_bs_code,
 			shop_zonecode,
@@ -22,6 +30,7 @@
 	 		#{shop_uuid},
 			#{shop_type},
 			#{shop_name},
+			#{shop_main_img_url},
 			#{shop_ceo},
 			#{shop_bs_code},
 			#{shop_zonecode},

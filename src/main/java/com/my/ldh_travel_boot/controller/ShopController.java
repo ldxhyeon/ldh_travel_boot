@@ -20,8 +20,6 @@ import com.my.ldh_travel_boot.vo.ShopImg;
 public class ShopController {
 	
 	
-	// boot 수정완료
-	// 테스트
 	
 	@Autowired
 	ShopService shopService;

@@ -21,6 +21,7 @@ public class ShopController {
 	
 	
 	// boot 수정완료
+	// 테스트
 	
 	@Autowired
 	ShopService shopService;

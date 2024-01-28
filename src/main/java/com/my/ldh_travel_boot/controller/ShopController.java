@@ -1,9 +1,13 @@
 package com.my.ldh_travel_boot.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.my.ldh_travel_boot.service.ShopImgService;
 import com.my.ldh_travel_boot.service.ShopService;
 import com.my.ldh_travel_boot.vo.Shop;
-import com.my.ldh_travel_boot.vo.ShopImg;
 
 
 @RestController
@@ -26,6 +29,26 @@ public class ShopController {
 	
 	@Autowired
 	ShopImgService shopImgService;
+	
+	
+	
+	
+	@GetMapping("findByTypeWithLimit")
+	public List<Shop> findByTypeWithLimit(
+				@RequestParam(value="count") int count,
+				@RequestParam(value="types[]") List<String> types
+			) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("count", count);
+		
+		map.put("type", types);
+		
+		List<Shop> shops = shopService.findByTypeWithLimit(map);
+		
+		return shops;
+	}
 	
 	
 	

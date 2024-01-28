@@ -30,4 +30,10 @@ public class ViewController {
 		return "add-shop";
 	}
 	
+	@GetMapping("detail-shop")
+	public String detailShop() {
+		
+		return "detail-shop";
+	}
+	
 }

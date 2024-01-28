@@ -1,6 +1,7 @@
 package com.my.ldh_travel_boot.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class ShopService {
 	
 	@Autowired
 	ShopImgDao shopImgDao;
+	
+	
+	public List<Shop> findByTypeWithLimit(Map<String,Object> map) {
+		return shopDao.findByTypeWithLimit(map);
+	}
 	
 	
 	@Transactional

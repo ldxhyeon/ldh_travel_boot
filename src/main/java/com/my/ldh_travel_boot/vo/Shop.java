@@ -18,11 +18,33 @@ public class Shop {
 	private String shop_content = null;
 	private String shop_created_date = null;
 	
+	private float rank = 0.0f;
+	private int review_cnt = 0;
+	private int view_cnt = 0;
 	
 	
 	
 	
 	
+	
+	public float getRank() {
+		return rank;
+	}
+	public void setRank(float rank) {
+		this.rank = rank;
+	}
+	public int getReview_cnt() {
+		return review_cnt;
+	}
+	public void setReview_cnt(int review_cnt) {
+		this.review_cnt = review_cnt;
+	}
+	public int getView_cnt() {
+		return view_cnt;
+	}
+	public void setView_cnt(int view_cnt) {
+		this.view_cnt = view_cnt;
+	}
 	public String getShop_main_img_url() {
 		return shop_main_img_url;
 	}

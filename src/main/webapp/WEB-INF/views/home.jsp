@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>트립쉐어</title>
-<link rel="icon" href="./image/trip-logo-icon.png"/>
+<link rel="icon" href="./image/trip-logo.png"/>
 
 
 <%@ include file="/WEB-INF/views/include/lib.jsp" %>
@@ -90,7 +90,7 @@
 		
 		<section class="page-section">
 			<div class="page-inner">
-				<div class="page-title-txt">한인민박/셰어하우스</div>
+				<div class="page-title-txt">민박/셰어하우스</div>
 				<div class="page-sub-title-txt">전국의 숨겨진 숙박시설을 한눈에 확인해보세요.</div>
 				
 				<div id="list-3" class="box-list-container">

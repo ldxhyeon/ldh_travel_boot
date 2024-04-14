@@ -12,6 +12,7 @@ import com.my.ldh_travel_boot.dao.ShopDao;
 import com.my.ldh_travel_boot.dao.ShopImgDao;
 import com.my.ldh_travel_boot.vo.Shop;
 import com.my.ldh_travel_boot.vo.ShopImg;
+import com.my.ldh_travel_boot.vo.ShopReview;
 
 
 
@@ -24,6 +25,22 @@ public class ShopService {
 	@Autowired
 	ShopImgDao shopImgDao;
 	
+	
+	public int updateReviewCnt(Shop shop) {
+		return shopDao.updateReviewCnt(shop);
+	}
+	
+	public int updateRank(Shop shop) {
+		return shopDao.updateRank(shop);
+	}
+	
+	public int plusViewCnt(int shop_idx) {
+		return shopDao.plusViewCnt(shop_idx);
+	}
+	
+	public Shop findByUuid(String shop_uuid) {
+		return shopDao.findByUuid(shop_uuid);
+	}
 	
 	public List<Shop> findByTypeWithLimit(Map<String,Object> map) {
 		return shopDao.findByTypeWithLimit(map);

@@ -1,6 +1,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop">	
+	
+	
+	<update id="updateReviewCnt" parameterType="Shop">
+		UPDATE shop
+		SET
+			review_cnt = review_cnt + #{review_cnt}
+		WHERE
+			shop_idx = #{shop_idx}
+	</update>
 
+	<update id="updateRank" parameterType="Shop">
+		UPDATE shop
+		SET
+			rank = #{rank}
+		WHERE
+			shop_idx = #{shop_idx}
+	</update>
+
+
+	<update id="plusViewCnt" parameterType="Integer">
+		UPDATE shop
+		SET
+			view_cnt = view_cnt + 1
+		WHERE
+			shop_idx = #{shop_idx}
+	</update>
+
+	
+	<select id="findByUuid" parameterType="String" resultType="Shop">
+		SELECT * from shop
+		WHERE shop_uuid=#{shop_uuid}
+	</select>
 	
 	
 	<select id="findByTypeWithLimit" parameterType="HashMap" resultType="Shop">

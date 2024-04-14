@@ -1,6 +1,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop_img">	
 
+
+	<select id="findByShopIdx" parameterType="integer" resultType="ShopImg">
+		SELECT * FROM shop_img
+		WHERE shop_idx=#{shop_idx}
+	</select>
+
 	 
 	 <insert id="save" parameterType="ShopImg">
 	 	INSERT INTO shop_img

@@ -9,7 +9,7 @@
     
 <header>
 	<div class="page-inner d-flex j-c-space-between a-i-ceter">
-		<img style="height:60%;margin-bottom:5px;" src="./image/trip-logo.png">
+		<img id="main-logo" style="height:90%;margin-top:7px; cursor:pointer;" src="./image/trip-logo.png">
 		
 		<div>
 			<span class="menu-btn" data-page="./add-shop">트립쉐어소개</span>

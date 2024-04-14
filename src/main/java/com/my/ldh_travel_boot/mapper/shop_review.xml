@@ -1,0 +1,42 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop_review">	
+
+
+	
+	<select id="findByshopIdxAndUserIdx" parameterType="ShopReview" resultType="ShopReview">
+		SELECT * FROM shop_review
+		WHERE 
+			user_idx=${user_idx}
+			AND
+			shop_idx=${shop_idx}
+	</select>
+	
+
+	<select id="findByShopIdx" parameterType="Integer" resultType="ShopReview">
+		SELECT * FROM shop_review AS sr
+		INNER JOIN user AS u
+		ON u.user_idx=sr.user_idx
+		WHERE sr.shop_idx = #{shop_idx}
+	</select>
+
+	 
+	 <insert id="save" parameterType="ShopReview">
+	 	INSERT INTO shop_review
+	 	(
+			shop_idx,
+			user_idx,
+			rank,
+			content,
+			created_date
+	 	)
+	 	VALUES
+	 	(
+	 		#{shop_idx},
+			#{user_idx},
+			#{rank},
+			#{content},
+			SYSDATE()
+	 	)
+	 </insert>
+	
+</mapper> 

@@ -15,6 +15,22 @@ public class ShopDao {
 	@Autowired
 	SqlSession s;
 	
+	public int updateReviewCnt(Shop shop) {
+		return s.update("shop.updateRank",shop);
+	}
+	
+	public int updateRank(Shop shop) {
+		return s.update("shop.updateRank",shop);
+	}
+	
+	public int plusViewCnt(int shop_idx) {
+		return s.update("shop.plusViewCnt",shop_idx);
+	}
+	
+	public Shop findByUuid(String shop_uuid) {
+		return s.selectOne("shop.findByUuid",shop_uuid);
+	}
+	
 	public List<Shop> findByTypeWithLimit(Map<String,Object> map) {
 		return s.selectList("shop.findByTypeWithLimit",map);
 	}

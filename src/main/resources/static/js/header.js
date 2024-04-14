@@ -7,6 +7,10 @@ $(document).ready(function(){
 		location.href=page;
 	});
 	
+	$('#main-logo').click(function(){
+		location.href='./';
+	});
+	
 	
 	// 로그인 페이지 이동
 	$('#go-login-btn').click(function(){

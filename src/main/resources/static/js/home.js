@@ -6,7 +6,30 @@ $(document).ready(function(){
 	
 	
 	$(document).on('click','.shop-box',function(){
-		location.href='./detail-shop'
+		
+		var shopUuid = $(this).data('shop-uuid');
+		var shopIdx = $(this).data('shop-idx');
+		var shopBox = $(this);
+		
+		
+		//ajax view 증가 처리
+		$.ajax({
+			url:'./shop/plusVC',
+			type:'post',
+			data:{
+				shop_idx:shopIdx
+			},
+			success:function(response) {
+				//조회수 ui +1 처리
+				var vc = shopBox.find('.vc').html();
+				shopBox.find('.vc').html(parseInt(vc)+1);
+			},
+			error:function(err) {
+				
+			}
+		})
+		
+		location.href='./detail-shop?shop_uuid='+shopUuid
 	});
 	
 	
@@ -57,7 +80,7 @@ function loadShops() {
 		type:'get',
 		data:{
 			count:4,
-			types:['한인민박','셰어하우스']
+			types:['민박','셰어하우스']
 		},
 		success:function(shops){
 			$.each(shops,function(index,shop){
@@ -107,12 +130,12 @@ function buildShopBox(shop) {
 	
 	return `
 			<div class="shop-space">
-				<div class="shop-box">
+				<div class="shop-box" data-shop-uuid="${shop.shop_uuid}" data-shop-idx='${shop.shop_idx}'>
 					<div class="img-box">
 						<img src="${shop.shop_main_img_url}"/>		
 						<span>
 							<i class="fa-regular fa-eye"></i>
-							${shop.view_cnt}
+							<span class="vc">${shop.view_cnt}</span>
 						</span>
 					</div>
 					

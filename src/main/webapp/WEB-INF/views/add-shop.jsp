@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>트립쉐어 | 업체등록</title>
-<link rel="icon" href="./image/trip-logo-icon.png"/>
+<link rel="icon" href="./image/1.png"/>
 
 
 <%@ include file="/WEB-INF/views/include/lib.jsp" %>
@@ -46,7 +46,7 @@
 				<span data-value="리조트" class="f-type-tag">리조트</span>
 				<span data-value="게스트하우스" class="f-type-tag">게스트하우스</span>
 				<br/>
-				<span data-value="한인민박" class="f-type-tag">한인민박</span>
+				<span data-value="민박" class="f-type-tag">민박</span>
 				<span data-value="셰어하우스" class="f-type-tag">셰어하우스</span>
 				<span data-value="글램핑" class="f-type-tag">글램핑</span>
 				<span data-value="료칸" class="f-type-tag">료칸</span>

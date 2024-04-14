@@ -33,6 +33,30 @@ public class ShopController {
 	
 	
 	
+	@PostMapping("plusVC") 
+	public String plusVC(
+				@RequestParam(value="shop_idx") int shop_idx
+			) {
+		
+		shopService.plusViewCnt(shop_idx);
+		
+		return "ok";
+	}
+	
+	
+	
+	@GetMapping("findByUuid")
+	public Shop findByUuid(
+				@RequestParam(value="shop_uuid") String shop_uuid
+			) {
+		
+		Shop shop = shopService.findByUuid(shop_uuid);
+		
+		return shop;
+	}
+	
+	
+	
 	@GetMapping("findByTypeWithLimit")
 	public List<Shop> findByTypeWithLimit(
 				@RequestParam(value="count") int count,
@@ -100,6 +124,8 @@ public class ShopController {
 		shop.setShop_tel(shop_tel);
 		shop.setShop_content(shop_content);
 		shop.setShop_main_img_url(img_url);
+		
+		detail_imgs.add(0, img_url);
 		
 		
 		shopService.saveWithImages(shop, detail_imgs);

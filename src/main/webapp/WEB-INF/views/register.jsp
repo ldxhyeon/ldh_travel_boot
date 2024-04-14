@@ -27,15 +27,16 @@
 
 	<main class="body">
 	
-		<div style="display:flex;">
-			<section style="width:35%;height:100vh;background: red;">
-				<img style="width:100%;height:100%;object-fit:cover;" src="https://i.pinimg.com/originals/f4/ff/c7/f4ffc7827687908d4d28fd3fc8513d57.jpg"/>
-			</section>
-			<section class="form-body" style="width:65%;height:100vh;background: #fff;">
+<!-- 		<div style="display:flex;"> -->
+<!-- 			<section style="width:35%;height:100vh;background: red;"> -->
+<!-- 				<img style="width:100%;height:100%;object-fit:cover;" src="https://i.pinimg.com/originals/f4/ff/c7/f4ffc7827687908d4d28fd3fc8513d57.jpg"/> -->
+<!-- 			</section> -->
+			<section class="form-body" style="width:100%;height:100vh;background: #fff;">
 			
 				<div class="form-box">
-					<div style="font-size:22px; font-weight:700; margin-bottom:4px">안녕하세요.</div>
-					<div style="font-size:22px; font-weight:700; margin-bottom:20px">이번 주말 여행 어떠세요?</div>
+					<img id="main-logo"style="width:225px;cursor:pointer;margin:0px 0px 10px 53px;" src="./image/trip-logo.png">
+<!-- 					<div style="font-size:22px; font-weight:700; margin-bottom:4px">안녕하세요.</div> -->
+<!-- 					<div style="font-size:22px; font-weight:700; margin-bottom:20px">이번 주말 여행 어떠세요?</div> -->
 					<label>아이디</label>
 					<input id="id" placeholder="아이디" style="margin-bottom:2px;"/>
 					<div id="id-result" class="inp-result-txt"></div>
@@ -77,7 +78,7 @@
 					
 					
 					
-					<button id="submit-btn" style="margin-top:40px">Travel 시작하기</button>
+					<button id="submit-btn" style="margin-top:20px">Travel 시작하기</button>
 				</div>
 			
 			</section>
@@ -93,4 +94,5 @@
 </body>
 
 <script src="./js/home.js"></script>
+<script src="./js/header.js"></script>
 </html>

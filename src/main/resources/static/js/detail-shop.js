@@ -17,7 +17,7 @@ function init() {
 	const urlParams = new URLSearchParams(queryString);
 	const shop_uuid = urlParams.get('shop_uuid');
 	
-	alert(shop_uuid);
+	//	alert(shop_uuid);
 	
 	
 	

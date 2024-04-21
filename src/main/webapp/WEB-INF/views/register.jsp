@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>트립쉐어 로그인</title>
+<title>트립쉐어 | 회원가입</title>
 <link rel="icon" href="./image/trip-logo-icon.png"/>
 
 
@@ -78,7 +78,7 @@
 					
 					
 					
-					<button id="submit-btn" style="margin-top:20px">Travel 시작하기</button>
+					<button id="submit-btn" style="margin-top:20px">TripShare 시작하기</button>
 				</div>
 			
 			</section>

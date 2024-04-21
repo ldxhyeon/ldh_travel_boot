@@ -37,7 +37,7 @@ $(document).ready(function(){
 			imgs:['a','b']
 		},
 		success:function(response) {
-			alert(response)
+//			alert(response)
 		},
 		error:function(error) {
 			console.log(error);

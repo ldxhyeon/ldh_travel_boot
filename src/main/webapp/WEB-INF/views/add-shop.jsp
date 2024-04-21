@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>트립쉐어 | 업체등록</title>
-<link rel="icon" href="./image/1.png"/>
+<link rel="icon" href="./image/trip-logo-icon.png"/>
 
 
 <%@ include file="/WEB-INF/views/include/lib.jsp" %>

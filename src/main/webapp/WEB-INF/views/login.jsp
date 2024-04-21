@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>트립쉐어 로그인</title>
-<link rel="icon" href="./image/trip-logo.png"/>
+<title>트립쉐어 | 로그인</title>
+<link rel="icon" href="./image/trip-logo-icon.png"/>
 
 <%@ include file="/WEB-INF/views/include/lib.jsp" %>
 

@@ -2,7 +2,6 @@ package com.my.ldh_travel_boot.service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.my.ldh_travel_boot.dao.ShopDao;
 import com.my.ldh_travel_boot.dao.ShopImgDao;
+import com.my.ldh_travel_boot.dao.ShopReviewDao;
 import com.my.ldh_travel_boot.vo.Shop;
 import com.my.ldh_travel_boot.vo.ShopImg;
 import com.my.ldh_travel_boot.vo.ShopReview;
@@ -23,8 +23,15 @@ public class ShopService {
 	ShopDao shopDao;
 	
 	@Autowired
+	ShopReviewDao shopReviewDao;
+	
+	@Autowired
 	ShopImgDao shopImgDao;
 	
+	
+	public Shop findByIdx(int shop_idx) {
+		return shopDao.findByIdx(shop_idx);
+	}
 	
 	public int updateReviewCnt(Shop shop) {
 		return shopDao.updateReviewCnt(shop);
@@ -67,6 +74,7 @@ public class ShopService {
 			shopImgDao.save(si);
 		}
 	}
+	
 	
 	public int save(Shop shop) {
 		return shopDao.save(shop);

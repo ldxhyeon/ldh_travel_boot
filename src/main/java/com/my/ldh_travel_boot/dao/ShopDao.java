@@ -15,6 +15,10 @@ public class ShopDao {
 	@Autowired
 	SqlSession s;
 	
+	public Shop findByIdx(int shop_idx) {
+		return s.selectOne("shop.findByIdx",shop_idx);
+	}
+	
 	public int updateReviewCnt(Shop shop) {
 		return s.update("shop.updateRank",shop);
 	}

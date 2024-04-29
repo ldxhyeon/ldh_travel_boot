@@ -68,7 +68,7 @@ public class ShopReviewController {
 	@PostMapping("save")
 	public String save(
 				@RequestParam(value="shop_idx") int shop_idx,
-				@RequestParam(value="rank") int rank,
+				@RequestParam(value="rank") int oneRank,
 				@RequestParam(value="content") String content,
 				HttpSession session
 			) {
@@ -83,8 +83,9 @@ public class ShopReviewController {
 		ShopReview o = new ShopReview();
 		o.setShop_idx(shop_idx);
 		o.setUser_idx(me.getUser_idx());
-		o.setRank(rank);
+		o.setRank(oneRank);
 		o.setContent(content);
+		
 		
 		
 		ShopReview sr = shopReviewService.findByshopIdxAndUserIdx(o);
@@ -94,12 +95,14 @@ public class ShopReviewController {
 		}
 		
 		
+		//transaction 로직
+		boolean b = shopReviewService.saveAndUpdateRank(o, shop_idx, oneRank);
+		if(b) {
+			return "ok";
+		}else {
+			return "fail";
+		}
 		
-		
-		shopReviewService.save(o);
-		
-		
-		return "ok";
 	}
 	
 }

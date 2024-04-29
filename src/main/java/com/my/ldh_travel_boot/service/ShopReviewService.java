@@ -30,6 +30,36 @@ public class ShopReviewService {
 		return shopReviewDao.findByShopIdx(shop_idx);
 	}
 	
+	
+	@Transactional
+	public boolean saveAndUpdateRank(ShopReview o, int shop_idx, int oneRank) {
+		
+		try {
+			Shop shop = shopDao.findByIdx(shop_idx);
+			
+			float rank = shop.getRank();
+			int reviewCnt = shop.getReview_cnt();
+			
+			//계산 확인.
+			float newRank = ((rank * reviewCnt) + oneRank) / (reviewCnt + 1);
+					
+			Shop s = new Shop();
+			
+			s.setRank(newRank);
+			s.setShop_idx(shop_idx);
+			s.setReview_cnt(1);
+			
+			shopDao.updateReviewCnt(shop);
+			shopDao.updateRank(s);
+			shopReviewDao.save(o);
+			
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+	
+	
 	@Transactional
 	public int save(ShopReview o) {
 		
